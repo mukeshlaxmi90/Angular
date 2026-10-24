@@ -1,0 +1,353 @@
+
+<div class="auth-page">
+  <div class="background-shape shape-one"></div>
+  <div class="background-shape shape-two"></div>
+
+  <div class="auth-wrapper">
+    <section class="welcome-panel">
+      <div class="brand">
+        <div class="brand-icon">✦</div>
+        <span>MyPortal</span>
+      </div>
+
+      <div class="welcome-content">
+        <span class="eyebrow">YOUR JOURNEY STARTS HERE</span>
+
+        <h1>
+          {{ isLogin ? 'Welcome back!' : 'Join our community.' }}
+        </h1>
+
+        <p>
+          {{
+            isLogin
+              ? 'Sign in to continue your journey. Your space, your tools, all in one place.'
+              : 'Create your account and discover a simpler way to manage everything.'
+          }}
+        </p>
+
+        <div class="feature-list">
+          <div class="feature">
+            <span class="feature-icon">✓</span>
+            <span>Simple and easy to use</span>
+          </div>
+
+          <div class="feature">
+            <span class="feature-icon">✓</span>
+            <span>Your personal dashboard</span>
+          </div>
+
+          <div class="feature">
+            <span class="feature-icon">✓</span>
+            <span>A smooth experience on every device</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="welcome-footer">
+        © 2026 MyPortal. All rights reserved.
+      </div>
+    </section>
+
+    <section class="form-panel">
+      <div class="mobile-brand">
+        <div class="brand-icon">✦</div>
+        <span>MyPortal</span>
+      </div>
+
+      <div class="form-heading">
+        <span class="form-label">
+          {{ isLogin ? 'WELCOME BACK' : 'GET STARTED' }}
+        </span>
+
+        <h2>{{ isLogin ? 'Sign in' : 'Create account' }}</h2>
+
+        <p>
+          {{
+            isLogin
+              ? 'Enter your details to access your account.'
+              : 'Fill in your details to get started.'
+          }}
+        </p>
+      </div>
+
+      <div class="mode-switch">
+        <button
+          type="button"
+          [class.active]="isLogin"
+          (click)="switchMode(true)">
+          Login
+        </button>
+
+        <button
+          type="button"
+          [class.active]="!isLogin"
+          (click)="switchMode(false)">
+          Register
+        </button>
+      </div>
+
+      <div
+        *ngIf="message"
+        class="message"
+        [class.success]="messageType === 'success'"
+        [class.error]="messageType === 'error'"
+        role="status">
+        {{ message }}
+      </div>
+
+      <!-- LOGIN FORM -->
+      <form  *ngIf="isLogin"   #loginForm="ngForm"  (ngSubmit)="submitLogin()"    novalidate>
+
+        <div class="field">
+          <label for="loginEmail">Email address</label>
+
+          <div class="input-wrap">
+            <span class="input-icon">✉</span>
+
+            <input
+              id="loginEmail"
+              type="email"
+              name="loginEmail"
+              [(ngModel)]="loginData.email"
+              #loginEmail="ngModel"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+              email />
+
+          </div>
+
+          <small
+            class="field-error"
+            *ngIf="loginEmail.invalid && (loginEmail.touched || loginForm.submitted)">
+            Enter a valid email address.
+          </small>
+        </div>
+
+        <div class="field">
+          <label for="loginPassword">Password</label>
+
+          <div class="input-wrap">
+            <span class="input-icon">♙</span>
+
+            <input
+              id="loginPassword"
+              [type]="showLoginPassword ? 'text' : 'password'"
+              name="loginPassword"
+              [(ngModel)]="loginData.password"
+              #loginPassword="ngModel"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+              required />
+
+            <button
+              class="password-toggle"
+              type="button"
+              (click)="showLoginPassword = !showLoginPassword">
+              {{ showLoginPassword ? 'Hide' : 'Show' }}
+            </button>
+          </div>
+
+          <small
+            class="field-error"
+            *ngIf="loginPassword.invalid && (loginPassword.touched || loginForm.submitted)">
+            Password is required.
+          </small>
+        </div>
+
+        <div class="form-options">
+          <label class="remember-option">
+            <input
+              type="checkbox"
+              name="rememberMe"
+              [(ngModel)]="loginData.rememberMe" />
+            <span>Remember me</span>
+          </label>
+
+          <span class="helper-text">Secure sign in</span>
+        </div>
+
+        <button class="submit-button" type="submit">
+          Sign in <span>→</span>
+        </button>
+
+        <p class="switch-text">
+          Don't have an account?
+          <button type="button" (click)="switchMode(false)">
+            Create one
+          </button>
+        </p>
+      </form>
+
+      <!-- REGISTRATION FORM -->
+      <form
+        *ngIf="!isLogin"
+        #registerForm="ngForm"
+        (ngSubmit)="submitRegister()"
+        novalidate>
+
+        <div class="field">
+          <label for="fullName">Full name</label>
+
+          <div class="input-wrap">
+            <span class="input-icon">♙</span>
+
+            <input
+              id="fullName"
+              type="text"
+              name="fullName"
+              [(ngModel)]="registerData.fullName"
+              #fullName="ngModel"
+              placeholder="Enter your full name"
+              autocomplete="name"
+              required
+              minlength="2" />
+          </div>
+
+          <small
+            class="field-error"
+            *ngIf="fullName.invalid && (fullName.touched || registerForm.submitted)">
+            Enter your name (at least 2 characters).
+          </small>
+        </div>
+
+        <div class="field">
+          <label for="mobile">Mobile number</label>
+
+          <div class="input-wrap">
+            <span class="input-icon">☎</span>
+
+            <input
+              id="mobile"
+              type="tel"
+              name="mobile"
+              [(ngModel)]="registerData.mobile"
+              #mobile="ngModel"
+              placeholder="10-digit mobile number"
+              autocomplete="tel"
+              inputmode="numeric"
+              maxlength="10"
+              pattern="[0-9]{10}"
+              (input)="onMobileInput($event)"
+              required />
+          </div>
+
+          <small
+            class="field-error"
+            *ngIf="mobile.invalid && (mobile.touched || registerForm.submitted)">
+            Enter exactly 10 digits.
+          </small>
+        </div>
+
+        <div class="field">
+          <label for="registerEmail">Email address</label>
+
+          <div class="input-wrap">
+            <span class="input-icon">✉</span>
+
+            <input
+              id="registerEmail"
+              type="email"
+              name="registerEmail"
+              [(ngModel)]="registerData.email"
+              #registerEmail="ngModel"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+              email />
+          </div>
+
+          <small
+            class="field-error"
+            *ngIf="registerEmail.invalid && (registerEmail.touched || registerForm.submitted)">
+            Enter a valid email address.
+          </small>
+        </div>
+
+        <div class="field">
+          <label for="registerPassword">Password</label>
+
+          <div class="input-wrap">
+            <span class="input-icon">♙</span>
+
+            <input
+              id="registerPassword"
+              [type]="showRegisterPassword ? 'text' : 'password'"
+              name="registerPassword"
+              [(ngModel)]="registerData.password"
+              #registerPassword="ngModel"
+              placeholder="Minimum 8 characters"
+              autocomplete="new-password"
+              minlength="8"
+              required />
+
+            <button
+              class="password-toggle"
+              type="button"
+              (click)="showRegisterPassword = !showRegisterPassword">
+              {{ showRegisterPassword ? 'Hide' : 'Show' }}
+            </button>
+          </div>
+
+          <small
+            class="field-error"
+            *ngIf="registerPassword.invalid && (registerPassword.touched || registerForm.submitted)">
+            Password must be at least 8 characters.
+          </small>
+        </div>
+
+        <div class="field">
+          <label for="confirmPassword">Confirm password</label>
+
+          <div class="input-wrap">
+            <span class="input-icon">♙</span>
+
+            <input
+              id="confirmPassword"
+              [type]="showConfirmPassword ? 'text' : 'password'"
+              name="confirmPassword"
+              [(ngModel)]="registerData.confirmPassword"
+              #confirmPassword="ngModel"
+              placeholder="Re-enter your password"
+              autocomplete="new-password"
+              required />
+            
+            <button
+              class="password-toggle"
+              type="button"
+              (click)="showConfirmPassword = !showConfirmPassword">
+              {{ showConfirmPassword ? 'Hide' : 'Show' }}
+            </button>
+          </div>
+
+          <small
+            class="field-error"
+            *ngIf="confirmPassword.value && registerData.password !== registerData.confirmPassword">
+            Passwords do not match.
+          </small>
+
+          <small
+            class="field-error"
+            *ngIf="confirmPassword.invalid && (confirmPassword.touched || registerForm.submitted)">
+            Confirm your password.
+          </small>
+        </div>
+
+        <button class="submit-button" type="submit">
+          Create account <span>→</span>
+        </button>
+
+        <p class="switch-text">
+          Already have an account?
+          <button type="button" (click)="switchMode(true)">
+            Sign in
+          </button>
+        </p>
+      </form>
+
+      <p class="security-note">
+        <span>🔒</span> Your details should be handled securely.
+      </p>
+    </section>
+  </div>
+</div>

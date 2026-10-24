@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gold 3D Animation</title>
+
+<style>
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background: #000;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.gold-scene {
+    width: min(100vw, 720px);
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+}
+
+.gold-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    animation: goldMotion 8s ease-in-out infinite;
+    filter: drop-shadow(0 0 12px rgba(0, 90, 255, 0.2));
+}
+
+@keyframes goldMotion {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    25% {
+        transform: scale(1.025) rotate(1deg);
+    }
+
+    50% {
+        transform: scale(1.04) rotate(0deg);
+    }
+
+    75% {
+        transform: scale(1.025) rotate(-1deg);
+    }
+}
+
+@media (max-width: 500px) {
+    .gold-scene {
+        width: 100vw;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="gold-scene">
+      <img
+        class="gold-image"
+        src="https://cloud.xm-cdn.com/web/landing/xmbz/ng-public/assets/img/regional-ads/gold-pages/hero/gold_hero_img_snap_1246w.webp"
+        alt="Gold Bar"
+    >
+
+</div>
+
+</body>
+</html>

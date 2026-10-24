@@ -1,0 +1,16 @@
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 16px 22px;
+  color: #849cc8;
+  background: #080e29;
+  border-top: 1px solid #203d7b;
+  font-size: 12px;
+}
+
+.footer strong {
+  color: #10e6bd;
+}

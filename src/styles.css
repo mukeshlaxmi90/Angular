@@ -1,0 +1,402 @@
+
+/* =========================================
+   QUANTIX NEON DASHBOARD - GLOBAL STYLES
+   Angular: src/styles.css
+========================================= */
+
+/* ===== THEME VARIABLES ===== */
+
+:root {
+  --bg-main: #080d29;
+  --bg-sidebar: #10143b;
+  --bg-card: #0a1535;
+  --neon-blue: #087bff;
+  --neon-cyan: #08e6ff;
+  --neon-purple: #7045ff;
+  --neon-pink: #e94fff;
+  --neon-green: #12e6bd;
+  --neon-red: #ff609c;
+  --text-primary: #f0f5ff;
+  --text-muted: #91a9d8;
+  --border-color: #203b82;
+}
+
+/* ===== RESET ===== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg-main);
+  color: var(--text-primary);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+/* ===== STAR CURSOR ===== */
+/* Put star.png inside the Angular public folder */
+
+html,
+body,
+body * {
+  cursor: url('/star.png') 16 16, auto !important;
+}
+
+/* ===== GLOBAL TRANSITIONS ===== */
+
+a,
+button,
+input,
+select,
+textarea,
+.panel,
+.sidebar,
+.topbar {
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    color 0.25s ease,
+    filter 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* ===== APPLICATION BACKGROUND ===== */
+
+app-root,
+.app-shell,
+.main-area,
+.page-content {
+  min-height: 100vh;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+}
+
+/* ===== DASHBOARD BACKGROUND ===== */
+
+.dashboard {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      ellipse at 20% 5%,
+      rgba(100, 22, 150, 0.40),
+      transparent 45%
+    ),
+    radial-gradient(
+      ellipse at 95% 40%,
+      rgba(0, 130, 200, 0.28),
+      transparent 40%
+    ),
+    linear-gradient(
+      135deg,
+      #080d29,
+      #0b1030 55%,
+      #080d29
+    ) !important;
+}
+
+/* Also support a dashboard nested inside app-dashboard */
+app-dashboard .dashboard {
+  background:
+    radial-gradient(
+      ellipse at 20% 5%,
+      rgba(100, 22, 150, 0.40),
+      transparent 45%
+    ),
+    radial-gradient(
+      ellipse at 95% 40%,
+      rgba(0, 130, 200, 0.28),
+      transparent 40%
+    ),
+    #080d29 !important;
+}
+
+/* ===== GLASS NEON CARDS ===== */
+
+.panel,
+app-dashboard .panel {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(35, 19, 70, 0.96),
+      rgba(5, 20, 49, 0.98) 75%
+    ) !important;
+
+  border: 1px solid var(--neon-blue) !important;
+  border-radius: 13px !important;
+
+  box-shadow:
+    0 0 16px rgba(0, 95, 255, 0.18),
+    inset 0 0 22px rgba(42, 79, 180, 0.12) !important;
+}
+
+/* Card hover glow */
+
+.panel:hover,
+app-dashboard .panel:hover {
+  border-color: var(--neon-cyan) !important;
+
+  box-shadow:
+    0 0 8px rgba(0, 220, 255, 0.35),
+    0 0 22px rgba(0, 100, 255, 0.20),
+    inset 0 0 25px rgba(95, 45, 255, 0.12) !important;
+}
+
+/* ===== HEADER / TOPBAR ===== */
+
+.topbar,
+app-header .topbar {
+  background:
+    linear-gradient(
+      90deg,
+      #11102e,
+      #080f2b
+    ) !important;
+
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+/* Header search box */
+
+.search-box,
+app-header .search-box {
+  background: #0b1538 !important;
+  color: var(--text-primary) !important;
+  border: 1px solid #3157a4 !important;
+  border-radius: 8px;
+}
+
+.search-box input,
+app-header .search-box input {
+  background: transparent !important;
+  color: var(--text-primary) !important;
+  border: none;
+  outline: none;
+}
+
+.search-box input::placeholder,
+app-header .search-box input::placeholder {
+  color: var(--text-muted);
+}
+
+/* ===== SIDEBAR ===== */
+
+.sidebar,
+app-sidebar .sidebar {
+  background:
+    linear-gradient(
+      180deg,
+      #171333 0%,
+      #10143a 45%,
+      #080e2c 100%
+    ) !important;
+
+  color: var(--text-primary);
+  border-color: #176cff !important;
+
+  box-shadow:
+    inset -8px 0 25px rgba(100, 40, 255, 0.08);
+}
+
+/* Sidebar navigation links */
+
+.sidebar nav a,
+app-sidebar nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+/* Active navigation link */
+
+.sidebar nav a.active,
+app-sidebar nav a.active {
+  color: #ffffff !important;
+
+  background:
+    linear-gradient(
+      100deg,
+      #1747a8,
+      #30216f
+    ) !important;
+
+  border: 1px solid #397cff !important;
+
+  box-shadow:
+    0 0 15px rgba(27, 99, 255, 0.25) !important;
+}
+
+/* Navigation hover */
+
+.sidebar nav a:hover,
+app-sidebar nav a:hover {
+  color: #ffffff !important;
+  background: rgba(8, 123, 255, 0.18);
+}
+
+/* ===== NEON BUTTONS ===== */
+
+button,
+app-dashboard .filters button,
+app-dashboard .panel-heading button {
+  color: #e8f2ff;
+}
+
+app-dashboard .filters button,
+app-dashboard .panel-heading button {
+  background:
+    linear-gradient(
+      135deg,
+      #111e4b,
+      #10123a
+    ) !important;
+
+  border: 1px solid #315dca !important;
+  border-radius: 8px;
+}
+
+/* Button and link hover */
+
+button:hover,
+a:hover {
+  filter: drop-shadow(0 0 7px var(--neon-cyan));
+}
+
+button:hover {
+  border-color: var(--neon-cyan);
+}
+
+a:hover {
+  text-shadow: 0 0 5px rgba(8, 230, 255, 0.35);
+}
+
+/* ===== INPUTS ===== */
+
+input,
+select,
+textarea {
+  color: var(--text-primary);
+  background-color: #0b1538;
+  border: 1px solid #3157a4;
+  border-radius: 8px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 10px rgba(8, 230, 255, 0.18);
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+  filter: drop-shadow(0 0 5px rgba(8, 230, 255, 0.25));
+}
+
+/* ===== POSITIVE / NEGATIVE VALUES ===== */
+
+.positive,
+app-dashboard .positive,
+app-footer .footer strong {
+  color: var(--neon-green) !important;
+}
+
+.negative,
+app-dashboard .negative {
+  color: var(--neon-red) !important;
+}
+
+/* ===== FOOTER ===== */
+
+.footer,
+app-footer .footer {
+  background: #080e29 !important;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-color) !important;
+}
+
+/* ===== TEXT UTILITIES ===== */
+
+.text-primary {
+  color: var(--text-primary) !important;
+}
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+.text-cyan {
+  color: var(--neon-cyan) !important;
+}
+
+.text-purple {
+  color: var(--neon-purple) !important;
+}
+
+/* ===== SCROLLBAR ===== */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080d29;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #263d83;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-blue);
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 12px;
+  }
+
+  .panel {
+    border-radius: 10px !important;
+  }
+}
+
+/* ===== ACCESSIBILITY ===== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

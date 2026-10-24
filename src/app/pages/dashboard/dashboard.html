@@ -1,0 +1,182 @@
+
+<section class="dashboard">
+  <div class="page-heading">
+    <div>
+      <h1>Dashboard</h1>
+      <p>Track your business performance and grow faster</p>
+    </div>
+
+    <div class="filters">
+      <span class="date-pill">▣ Oct 18 - Nov 18</span>
+      <select [value]="selectedPeriod" (change)="setPeriod($event)">
+        <option>Daily</option>
+        <option>Weekly</option>
+        <option>Monthly</option>
+        <option>Yearly</option>
+      </select>
+      <button>☷ Filter</button>
+      <button>⇩ Export</button>
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <article class="panel stat-card">
+      <div class="stat-title">◉ &nbsp; Global Growth Score</div>
+      <div class="stat-bottom">
+        <div class="gauge"><strong>78%</strong></div>
+        <span class="positive">↑ 12%</span>
+        <div class="sparkline cyan"></div>
+      </div>
+    </article>
+
+    <article class="panel stat-card">
+      <div class="stat-title">▤ &nbsp; Recurring Net Revenue</div>
+      <div class="stat-bottom">
+        <strong class="big-number">$54,200</strong>
+        <span class="positive">↑ 18.5%</span>
+        <div class="sparkline gold"></div>
+      </div>
+    </article>
+
+    <article class="panel stat-card">
+      <div class="stat-title">◈ &nbsp; Active Campaign Conversion</div>
+      <div class="stat-bottom">
+        <strong class="big-number">21.5%</strong>
+        <span class="positive">↑ 6.8%</span>
+        <div class="sparkline purple"></div>
+      </div>
+    </article>
+  </div>
+
+  <div class="analytics-grid">
+    <article class="panel growth-panel">
+      <div class="panel-heading">
+        <h2>♧ &nbsp; Cross-Platform Growth</h2>
+        <button>☷ Filter</button>
+        <button>↕ Sort</button>
+        <button>•••</button>
+      </div>
+
+      <div class="revenue">$9,257.51 <span>↑ 16.8%</span></div>
+      <p class="muted">↑ 15.8% &nbsp; +$43.30 increased</p>
+
+      <div class="flow-chart">
+        <svg viewBox="0 0 680 230" role="img" aria-label="Cross-platform growth flow chart">
+          <defs>
+            <linearGradient id="flowBlue">
+              <stop offset="0" stop-color="#13e8e9" stop-opacity=".8"/>
+              <stop offset="1" stop-color="#2084ff" stop-opacity=".45"/>
+            </linearGradient>
+            <linearGradient id="flowPurple">
+              <stop offset="0" stop-color="#5748ff" stop-opacity=".8"/>
+              <stop offset="1" stop-color="#db4eff" stop-opacity=".45"/>
+            </linearGradient>
+          </defs>
+          <g fill="none" stroke-width="24" opacity=".85">
+            <path d="M95 64 C210 64 230 100 335 100 S470 62 580 62" stroke="url(#flowBlue)"/>
+            <path d="M95 95 C210 95 230 40 335 40 S470 112 580 112" stroke="url(#flowPurple)"/>
+            <path d="M95 128 C210 128 230 145 335 145 S470 145 580 145" stroke="url(#flowBlue)"/>
+            <path d="M95 158 C210 158 230 190 335 190 S470 175 580 175" stroke="url(#flowPurple)"/>
+            <path d="M95 185 C210 185 230 130 335 130 S470 80 580 80" stroke="url(#flowBlue)"/>
+          </g>
+          <g fill="#0a2350" stroke="#21e3f4" stroke-width="1.5">
+            <rect x="15" y="45" width="115" height="30" rx="7"/>
+            <rect x="15" y="82" width="115" height="30" rx="7"/>
+            <rect x="15" y="119" width="115" height="30" rx="7"/>
+            <rect x="15" y="156" width="115" height="30" rx="7"/>
+            <rect x="282" y="82" width="115" height="30" rx="7"/>
+            <rect x="282" y="119" width="115" height="30" rx="7"/>
+            <rect x="282" y="156" width="115" height="30" rx="7"/>
+            <rect x="535" y="45" width="125" height="30" rx="7"/>
+            <rect x="535" y="82" width="125" height="30" rx="7"/>
+            <rect x="535" y="119" width="125" height="30" rx="7"/>
+            <rect x="535" y="156" width="125" height="30" rx="7"/>
+          </g>
+          <g fill="#e8faff" font-size="13" text-anchor="middle">
+            <text x="72" y="65">APAC</text><text x="72" y="102">EMEA</text>
+            <text x="72" y="139">AMER</text><text x="72" y="176">APAC</text>
+            <text x="339" y="102">APAC</text><text x="339" y="139">AMER</text>
+            <text x="339" y="176">EMEA</text>
+            <text x="597" y="65">APAC</text><text x="597" y="102">APAC</text>
+            <text x="597" y="139">EMEA</text><text x="597" y="176">APAC</text>
+          </g>
+          <g fill="#a9c6f5" font-size="13" text-anchor="middle">
+            <text x="72" y="215">Oct</text><text x="339" y="215">Nov</text><text x="597" y="215">Dec</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="legend">
+        <span>🟣 China</span><span>🔵 UE</span><span>🔹 USA</span><span>🟢 Canada</span><span>Other</span>
+      </div>
+    </article>
+
+    <article class="panel retention-panel">
+      <div class="panel-heading">
+        <h2>♙ &nbsp; User Cohort Retention</h2>
+        <button>Churn Alert</button>
+      </div>
+      <div class="revenue">24,473</div>
+      <p class="muted"><span class="negative">↓ 8.3%</span> &nbsp; -749 increased</p>
+
+      <div class="bar-chart">
+        <div class="bar-item"><span class="person">A</span><div class="bar pink" style="height:90%"></div><small>Sun</small></div>
+        <div class="bar-item"><span class="person">M</span><div class="bar blue" style="height:76%"></div><small>Mon</small></div>
+        <div class="bar-item"><span class="person">J</span><div class="bar cyan" style="height:68%"></div><small>Tue</small></div>
+        <div class="bar-item"><span class="person">S</span><div class="bar green" style="height:58%"></div><small>Wed</small></div>
+        <div class="bar-item"><span class="person">R</span><div class="bar yellow" style="height:52%"></div><small>Thu</small></div>
+        <div class="bar-item"><span class="person">K</span><div class="bar orange" style="height:44%"></div><small>Fri</small></div>
+        <div class="bar-item"><span class="person">A</span><div class="bar purple" style="height:35%"></div><small>Sat</small></div>
+      </div>
+    </article>
+  </div>
+
+  <div class="bottom-grid">
+    <article class="panel mix-panel">
+      <div class="panel-heading">
+        <h2>◉ &nbsp; Revenue Source Mix</h2>
+        <select [value]="selectedPeriod" (change)="setPeriod($event)">
+          <option>Daily</option><option>Weekly</option>
+          <option>Monthly</option><option>Yearly</option>
+        </select>
+      </div>
+      <div class="mix-content">
+        <div class="donut"><div><strong>$54,200</strong><small>Total Revenue</small></div></div>
+        <div class="mix-legend">
+          <p>🔹 API Access <span>38%</span></p>
+          <p>🟦 Subscription <span>27%</span></p>
+          <p>🟡 Consulting <span>20%</span></p>
+          <p>🟣 Other <span>15%</span></p>
+        </div>
+      </div>
+    </article>
+
+    <article class="panel connections-panel">
+      <div class="panel-heading">
+        <h2>↗ &nbsp; System Connections</h2>
+        <a href="javascript:void(0)">See All</a>
+      </div>
+
+      <div class="connection-row table-head">
+        <span>Application</span><span>System Health</span>
+        <span>Sync Frequency</span><span>Automation</span>
+      </div>
+      <div class="connection-row">
+        <span>🟣 Stripe</span><span class="health">● ● ● ○</span>
+        <span>Real-time</span><span><input type="checkbox" checked /></span>
+      </div>
+      <div class="connection-row">
+        <span>✳ Zapier</span><span class="health">● ● ● ○</span>
+        <span>Every 15 min</span><span><input type="checkbox" /></span>
+      </div>
+      <div class="connection-row">
+        <span>🟢 Shopify</span><span class="health">● ● ●</span>
+        <span>Every 1 hour</span><span><input type="checkbox" checked /></span>
+      </div>
+      <div class="connection-row">
+        <span>☁ Salesforce</span><span class="health">● ● ● ○</span>
+        <span>Every 30 min</span><span><input type="checkbox" checked /></span>
+      </div>
+    </article>
+  </div>
+</section>

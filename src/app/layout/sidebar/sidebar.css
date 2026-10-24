@@ -1,0 +1,265 @@
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+.sidebar {
+  height: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 18px 14px;
+  color: #c9d9fa;
+  background: linear-gradient(180deg, #10153c, #080e2c);
+  border: 1px solid #2256a3;
+  border-radius: 12px;
+  transition: width .25s ease;
+  overflow: visible;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 5px 8px 25px;
+  text-decoration: none;
+  color: white;
+}
+
+.brand-icon {
+  font-size: 34px;
+  font-weight: 900;
+  color: #20e8ff;
+  text-shadow: 0 0 18px #168bff;
+}
+
+.brand-text strong, .brand-text small {
+  display: block;
+}
+
+.brand-text strong {
+  font-size: 20px;
+}
+
+.brand-text small {
+  color: #8ea7d9;
+}
+
+.section-title {
+  color: #7e99cf;
+  font-size: 11px;
+  margin: 17px 7px 8px;
+  letter-spacing: 1px;
+}
+
+nav {
+  display: grid;
+  gap: 5px;
+}
+
+nav a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 10px;
+  border-radius: 9px;
+  text-decoration: none;
+  color: #b8c9ec;
+  white-space: nowrap;
+  transition: .2s;
+}
+
+nav a > span:first-child {
+  min-width: 17px;
+  text-align: center;
+  font-size: 17px;
+}
+
+nav a:hover, nav a.active {
+  color: white;
+  background: linear-gradient(100deg, #183e9e, #282b78);
+  box-shadow: inset 0 0 0 1px #3d7cff, 0 0 14px #123ba855;
+}
+
+.beta {
+  margin-left: auto;
+  background: #4837ed;
+  padding: 3px 6px;
+  border-radius: 6px;
+  font-size: 10px;
+}
+
+.ai-card {
+  margin-top: auto;
+  text-align: center;
+  padding: 15px 9px;
+  background: linear-gradient(140deg, #111c4b, #17104a);
+  border: 1px solid #3154a2;
+  border-radius: 12px;
+}
+
+.rocket {
+  font-size: 47px;
+  filter: drop-shadow(0 0 12px #338dff);
+}
+
+.ai-card p {
+  font-size: 12px;
+  color: #9db5e9;
+}
+
+.ai-button {
+  width: 100%;
+  padding: 10px 5px;
+  color: white;
+  background: linear-gradient(100deg, #423aff, #146dff);
+  border: 1px solid #6b82ff;
+  border-radius: 9px;
+  cursor: pointer;
+  box-shadow: 0 0 15px #3d4fff55;
+}
+
+.sidebar-copy {
+  color: #738bbd;
+  text-align: center;
+  font-size: 10px;
+  margin-top: 18px;
+}
+
+.sidebar.collapsed {
+  padding-inline: 7px;
+}
+
+.sidebar.collapsed .brand {
+  justify-content: center;
+  padding-inline: 0;
+}
+
+.sidebar.collapsed .brand-text,
+.sidebar.collapsed .section-title,
+.sidebar.collapsed .link-text,
+.sidebar.collapsed .beta {
+  display: none;
+}
+
+.sidebar.collapsed nav a {
+  justify-content: center;
+}
+
+/* ===== SIDEBAR COLLAPSE FIX ===== */
+
+
+
+/* Normal sidebar */
+:host:has(.sidebar.collapsed) {
+  flex-basis: 76px;
+  width: 76px;
+}
+/* Collapsed state */
+.sidebar.collapsed {
+  width: 100%;
+  padding: 18px 6px;
+}
+
+/* Brand icon centered */
+.sidebar.collapsed .brand {
+  justify-content: center;
+  gap: 0;
+  padding: 5px 0 25px;
+}
+
+.sidebar.collapsed .brand-icon {
+  font-size: 30px;
+}
+
+/* Hide text, section headings and badges */
+.sidebar.collapsed .brand-text,
+.sidebar.collapsed .section-title,
+.sidebar.collapsed .link-text,
+.sidebar.collapsed .beta {
+  display: none !important;
+}
+
+/* Keep menu icons visible and centered */
+.sidebar.collapsed nav a {
+  justify-content: center;
+  gap: 0;
+  padding: 11px 0;
+  width: 100%;
+}
+
+.sidebar.collapsed nav a > span:first-child {
+  display: block;
+  min-width: 24px;
+  font-size: 19px;
+  text-align: center;
+}
+
+/* Hide large AI card in collapsed mode */
+.sidebar.collapsed .ai-card {
+  padding: 10px 2px;
+  background: transparent;
+  border-color: transparent;
+}
+
+.sidebar.collapsed .rocket {
+  font-size: 25px;
+}
+
+.sidebar.collapsed .ai-button {
+  padding: 8px 0;
+  font-size: 16px;
+}
+
+/* Keep sidebar footer hidden when collapsed */
+.sidebar.collapsed .sidebar-copy {
+  display: none;
+}
+
+
+
+/* Tooltip default hidden */
+.sidebar nav a {
+  position: relative;
+}
+
+/* Tooltip box */
+.tooltip-text {
+  display: none;
+  position: absolute;
+  left: calc(100% + 14px);
+  top: 50%;
+  transform: translateY(-50%);
+
+  padding: 9px 14px;
+  border-radius: 8px;
+
+  background: #142858;
+  color: #ffffff;
+  border: 1px solid #3186ff;
+
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+
+  box-shadow: 0 4px 18px #0008;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* Show tooltip only when sidebar is collapsed */
+.sidebar.collapsed nav a:hover .tooltip-text {
+  display: block;
+}
+
+/* Normal mode mein tooltip nahi dikhega */
+.sidebar:not(.collapsed) .tooltip-text {
+  display: none;
+}
+
+/* Existing link text remains hidden when collapsed */
+.sidebar.collapsed nav a .link-text {
+  display: none !important;
+}

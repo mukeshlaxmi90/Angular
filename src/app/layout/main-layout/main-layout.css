@@ -1,0 +1,71 @@
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #080d29;
+}
+
+.app-shell {
+  display: grid;
+
+  /* Normal sidebar width */
+  grid-template-columns: 258px minmax(0, 1fr);
+
+  gap: 12px;
+  padding: 10px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background: #070b20;
+  color: #eaf2ff;
+
+  /* Grid aur content smooth resize honge */
+  transition: grid-template-columns 0.25s ease;
+}
+
+/* COLLAPSED: sidebar + remaining content */
+.app-shell.sidebar-collapsed {
+  grid-template-columns: 76px minmax(0, 1fr);
+}
+
+app-sidebar {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+}
+
+.main-area {
+  min-width: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #203d7b;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #080e29;
+}
+
+app-heder {
+  display: block;
+  width: 100%;
+  min-width: 0;
+}
+
+.page-content {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .app-shell {
+    grid-template-columns: 76px minmax(0, 1fr);
+    gap: 8px;
+    padding: 6px;
+  }
+
+  .app-shell.sidebar-collapsed {
+    grid-template-columns: 76px minmax(0, 1fr);
+  }
+}
